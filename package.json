@@ -1,20 +1,35 @@
 {
   "name": "@djmiskey/lab-tokens",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The shared look of the djmiskey.com labs: colour tokens, light/dark theme and the theme switch.",
   "license": "MIT",
   "type": "module",
   "exports": {
     "./tokens.css": "./tokens.css",
     "./tailwind.css": "./tailwind.css",
+    "./theme-switch.css": "./theme-switch.css",
     "./theme": "./theme.ts",
+    "./theme-script": {
+      "types": "./theme-script.d.ts",
+      "default": "./theme-script.js"
+    },
     "./ThemeSwitch": "./ThemeSwitch.tsx"
   },
-  "files": ["tokens.css", "tailwind.css", "theme.ts", "ThemeSwitch.tsx"],
+  "files": [
+    "tokens.css",
+    "tailwind.css",
+    "theme-switch.css",
+    "theme.ts",
+    "theme-script.js",
+    "theme-script.d.ts",
+    "ThemeSwitch.tsx"
+  ],
   "peerDependencies": {
     "react": ">=19"
   },
   "peerDependenciesMeta": {
-    "react": { "optional": true }
+    "react": {
+      "optional": true
+    }
   }
 }

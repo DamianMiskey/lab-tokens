@@ -1,0 +1,28 @@
+/* The theme switch for a lab without Tailwind: the same look as the Tailwind
+   classes on ThemeSwitch.tsx, through its plain class names. Needs tokens.css. */
+.lab-theme-switch {
+  display: flex;
+  width: 100%;
+  gap: 0.25rem;
+  padding: 0.125rem;
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+}
+.lab-theme-switch-option {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 0.375rem;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.lab-theme-switch-option:hover { color: var(--fg); }
+.lab-theme-switch-option[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--on-accent, #fff);
+  font-weight: 600;
+}

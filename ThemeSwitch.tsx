@@ -18,7 +18,8 @@ function subscribe(onChange: () => void) {
 }
 const current = () => (document.documentElement.dataset.themeChoice as ThemeChoice | undefined) ?? "system";
 
-// System / Light / Dark, for the whole site. The inline script in <head>
+// System / Light / Dark, for the whole site. Styled by Tailwind classes, or,
+// in a lab without Tailwind, by theme-switch.css through the lab-* class names. The inline script in <head>
 // already applied the stored choice before the first paint; this stores
 // changes and follows the device while "System" is chosen.
 export function ThemeSwitch() {
@@ -39,14 +40,14 @@ export function ThemeSwitch() {
   };
 
   return (
-    <div className="flex w-full gap-1 rounded-lg border border-line p-0.5" role="group" aria-label="Colour theme">
+    <div className="lab-theme-switch flex w-full gap-1 rounded-lg border border-line p-0.5" role="group" aria-label="Colour theme">
       {CHOICES.map((c) => (
         <button
           key={c.id}
           type="button"
           aria-pressed={choice === c.id}
           onClick={() => pick(c.id)}
-          className="flex-1 cursor-pointer rounded-md px-2 py-1 text-xs text-muted hover:text-fg aria-pressed:bg-accent aria-pressed:font-semibold aria-pressed:text-white"
+          className="lab-theme-switch-option flex-1 cursor-pointer rounded-md px-2 py-1 text-xs text-muted hover:text-fg aria-pressed:bg-accent aria-pressed:font-semibold aria-pressed:text-white"
         >
           {c.label}
         </button>

@@ -7,7 +7,7 @@ Each lab keeps its own **accent** colour, so they look like one family but are s
 ## Use it in a Next.js + Tailwind v4 lab
 
 ```sh
-npm i github:DamianMiskey/lab-tokens#v1.0.0
+npm i git+https://github.com/DamianMiskey/lab-tokens.git#v1.1.0
 ```
 
 ```ts
@@ -39,7 +39,9 @@ import { ThemeSwitch } from "@djmiskey/lab-tokens/ThemeSwitch";
 
 ## Without Tailwind
 
-Import `tokens.css` for the custom properties (`var(--surface)`, `var(--accent)`…), and inline `THEME_SCRIPT` the same way.
+Import `tokens.css` for the custom properties (`var(--surface)`, `var(--accent)`…) and `theme-switch.css` to style `<ThemeSwitch />` through its plain class names (`lab-theme-switch`, `lab-theme-switch-option`). Inline `THEME_SCRIPT` the same way; `@djmiskey/lab-tokens/theme-script` has it as plain JavaScript, for build tools that can't read TypeScript (a Vite config). With a strict CSP, allow it by hash (sha256 of the exact string).
+
+If text on your accent needs to be dark rather than white, set `--on-accent`.
 
 ## Changing the look
 

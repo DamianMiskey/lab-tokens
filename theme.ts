@@ -7,15 +7,8 @@
 // all follow. Elsewhere (localhost, *.vercel.app) it falls back to
 // localStorage on that site.
 export type ThemeChoice = "system" | "light" | "dark";
-export const THEME_KEY = "theme";
-export const SHARED_DOMAIN = "djmiskey.com";
-
-/**
- * Runs inline in <head>, before the page is drawn, so the first paint already
- * has the right colours (no flash of the wrong theme). Kept tiny and
- * dependency-free; storage can be blocked, hence the try.
- */
-export const THEME_SCRIPT = `(function(){try{var m=document.cookie.match(/(?:^|; )${THEME_KEY}=(system|light|dark)/),c=m?m[1]:localStorage.getItem("${THEME_KEY}")||"system",d=c==="dark"||(c==="system"&&matchMedia("(prefers-color-scheme: dark)").matches),e=document.documentElement;e.dataset.theme=d?"dark":"light";e.dataset.themeChoice=c}catch(x){}})()`;
+export { SHARED_DOMAIN, THEME_KEY, THEME_SCRIPT } from "./theme-script.js";
+import { SHARED_DOMAIN, THEME_KEY } from "./theme-script.js";
 
 export function resolve(choice: ThemeChoice, systemDark: boolean): "light" | "dark" {
   return choice === "system" ? (systemDark ? "dark" : "light") : choice;
