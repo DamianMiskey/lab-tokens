@@ -1,0 +1,53 @@
+/* The shared tokens of the djmiskey.com labs, as plain CSS custom properties:
+   no build step needed, so a lab without Tailwind can use them too.
+
+   Each lab supplies its own accent, the one colour that tells the labs apart:
+     :root {
+       --lab-accent: #0369a1;          buttons and highlights; white text on it ≥ 4.5:1
+       --lab-accent-dark: #0369a1;     optional, if dark mode needs a different one
+       --lab-accent-ink: #075985;      accent-coloured text, ≥ 4.5:1 on --bg, --surface, --code
+       --lab-accent-ink-dark: #38bdf8; the same, on the dark backgrounds
+     }
+
+   The theme: <html data-theme="light|dark"> decides (set before the first
+   paint by the script in theme.ts); without it (no JavaScript), the device
+   setting does. The dark values appear twice because a selector can't sit
+   both inside and outside a media query. */
+:root {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --line: #e3e2de;
+  --fg: #1d1d1b;
+  --muted: #64625d;
+  --code: #f1f0ec;
+  --danger: #c0362c;
+  --accent: var(--lab-accent);
+  --accent-ink: var(--lab-accent-ink);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #131312;
+  --surface: #1c1c1a;
+  --line: #2f2e2b;
+  --fg: #ecebe7;
+  --muted: #a09e97;
+  --code: #232321;
+  --danger: #ff7b6e;
+  --accent: var(--lab-accent-dark, var(--lab-accent));
+  --accent-ink: var(--lab-accent-ink-dark);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #131312;
+    --surface: #1c1c1a;
+    --line: #2f2e2b;
+    --fg: #ecebe7;
+    --muted: #a09e97;
+    --code: #232321;
+    --danger: #ff7b6e;
+    --accent: var(--lab-accent-dark, var(--lab-accent));
+    --accent-ink: var(--lab-accent-ink-dark);
+    color-scheme: dark;
+  }
+}
